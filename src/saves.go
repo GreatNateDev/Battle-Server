@@ -14,7 +14,12 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	playerName := r.URL.Query().Get("name")
 	typeof := r.URL.Query().Get("type")
 	data := r.URL.Query().Get("data")
-	//cookie := r.URL.Query().Get("cookie")
+	cookie := r.URL.Query().Get("cookie")
+	if !NameCookieAuth(playerName, cookie) {
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		w.Write([]byte("Failed Cookie Auth"))
+		return
+	}
 	f, err := os.ReadFile("../data/saves/" + playerName + ".json")
 	if err != nil {
 		fmt.Println("err")

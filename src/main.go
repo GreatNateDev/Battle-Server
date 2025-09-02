@@ -5,11 +5,16 @@ import (
 	"net/http"
 )
 
-const IP = "127.0.0.1"
-const PORT = "8080"
+const (
+	IP   = "127.0.0.1"
+	PORT = "8080"
+)
 
-var COOKIES []string
-var TMP_COOKIES []string
+var (
+	COOKIES     []string
+	TMP_COOKIES []string
+	CookieMap   = make(map[string]string)
+)
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Main Page Hit")

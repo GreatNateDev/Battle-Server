@@ -1,2 +1,5 @@
 _debug*
 __debug*
+data/saves
+data/admins.json
+data/logins.json

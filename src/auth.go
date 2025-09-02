@@ -36,6 +36,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	cookie := randomString(10)
 	w.Write([]byte(cookie))
 	fmt.Println("Sent cookie to authenticated client: " + cookie)
+	CookieMap[user] = cookie
 	COOKIES = append(COOKIES, cookie)
 	TMP_COOKIES = append(TMP_COOKIES, cookie)
 }
@@ -71,4 +72,22 @@ func cookieKill() {
 
 	COOKIES = keptCookies
 	TMP_COOKIES = nil // clear TMP_COOKIES
+	set := make(map[string]struct{})
+	for _, v := range COOKIES {
+		set[v] = struct{}{}
+	}
+
+	// Filter the dict
+	for k, v := range CookieMap {
+		if _, exists := set[v]; !exists {
+			delete(CookieMap, k)
+		}
+	}
+}
+func NameCookieAuth(name string, cookie string) bool {
+	if cookie == CookieMap[name] {
+		return true
+	} else {
+		return false
+	}
 }
