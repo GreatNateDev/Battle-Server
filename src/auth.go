@@ -85,9 +85,11 @@ func cookieKill() {
 	}
 }
 func NameCookieAuth(name string, cookie string) bool {
-	if cookie == CookieMap[name] {
-		return true
-	} else {
+	fmt.Println("Starting Auth:", name, cookie)
+
+	stored, ok := CookieMap[name]
+	if !ok {
 		return false
 	}
+	return cookie == stored
 }
