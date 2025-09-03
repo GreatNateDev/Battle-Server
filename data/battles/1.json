@@ -1,8 +1,0 @@
-{
-    "isTrainer" : false,
-    "curmon" : "mon1",
-    "mon1": {
-        "name" : "pikachu"
-    }
-
-}
