@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	DEBUG = false
+	DEBUG = true
 	IP    = "127.0.0.1"
 	PORT  = "8080"
 )
@@ -27,9 +27,11 @@ func apiSetup() {
 	http.HandleFunc("/login", loginHandler)
 	http.HandleFunc("/savedata", saveHandler)
 	http.HandleFunc("/submitcookie", cookieHandler)
-	http.HandleFunc("/data/pokemon", pokemonDataHandler)
+	http.HandleFunc("/test/pokemon", pokemonDataHandler)
+	http.HandleFunc("/test/auth", nameCookieHandler)
 	http.HandleFunc("/data/spritedl", spriteDownloadHandler)
 	http.HandleFunc("/data/battles", battleSelectHandler)
+	http.HandleFunc("/data/userexist", userExistHandler)
 }
 
 func main() {
