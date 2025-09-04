@@ -3,3 +3,4 @@ __debug*
 data/saves
 data/admins.json
 data/logins.json
+data/battles

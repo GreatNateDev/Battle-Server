@@ -27,6 +27,7 @@ func apiSetup() {
 	http.HandleFunc("/savedata", saveHandler)
 	http.HandleFunc("/submitcookie", cookieHandler)
 	http.HandleFunc("/data/pokemon", pokemonDataHandler)
+	http.HandleFunc("/data/spritedl", spriteDownloadHandler)
 	http.HandleFunc("/data/battles", battleSelectHandler)
 }
 
