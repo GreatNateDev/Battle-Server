@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func spriteDownloadHandler(w http.ResponseWriter, r *http.Request) {
@@ -17,5 +18,10 @@ func spriteDownloadHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Failed Cookie Auth"))
 		return
 	}
-
+	f, err := os.ReadFile("../data/pokemon/" + sprite + "/" + side + ".png")
+	if err != nil {
+		fmt.Println("spritenotfound")
+	}
+	w.Header().Set("Content-Type", "image/png")
+	w.Write([]byte(f))
 }

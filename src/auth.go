@@ -86,7 +86,11 @@ func cookieKill() {
 }
 func NameCookieAuth(name string, cookie string) bool {
 	fmt.Println("Starting Auth:", name, cookie)
-
+	if DEBUG == true {
+		if cookie == "abcdefghij" {
+			return true
+		}
+	}
 	stored, ok := CookieMap[name]
 	if !ok {
 		return false
