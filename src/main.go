@@ -37,5 +37,6 @@ func apiSetup() {
 func main() {
 	apiSetup()
 	cookieSetter()
+	fmt.Println("Serving Poke_Backend on port :8080")
 	http.ListenAndServe(IP+":"+PORT, nil)
 }
